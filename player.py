@@ -55,6 +55,11 @@ class Player(CircleShape):
             direction = pygame.Vector2(0, 1).rotate(self.rotation)
             shot.velocity = direction * PLAYER_SHOT_SPEED
 
+    def respawn(self, screen):
+
+        width, height = screen.get_size()
+        self.position = pygame.math.Vector2(width//2, height//2)
+
 
 
     
