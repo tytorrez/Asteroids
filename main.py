@@ -14,6 +14,7 @@ def main():
     print(f"Screen height: {SCREEN_HEIGHT}")
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    background = pygame.image.load("background.png")
     pygame.display.set_caption("Ultra Asteroids")
     font = pygame.font.SysFont(None, 36)
 
@@ -38,15 +39,15 @@ def main():
 
     last_hit = 0
     last_update = pygame.time.get_ticks()
-    
+
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         
-        screen.fill(pygame.Color("black"))
-
+        #screen.fill(pygame.Color("black"))
+        screen.blit(background, (0,0))
         current_time = pygame.time.get_ticks()
 
         for drawable in drawables:
@@ -68,8 +69,6 @@ def main():
                     bullet.kill()
                     asteroid.split()
                     score += 1000
-
-        
 
         if current_time - last_update >= 1000:
             last_update = current_time
